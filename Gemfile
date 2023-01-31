@@ -73,3 +73,7 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "barby", "~> 0.6.8"
+
+gem "chunky_png", "~> 1.4"
