@@ -16,17 +16,20 @@ class GenerateBarcode < ApplicationService
       # chunky_png required for THIS action
       png = Barby::PngOutputter.new(barcode).to_png
   
-      image_name = SecureRandom.hex
+      #image_name = SecureRandom.hex
+      image_name = item.numero
   
-      IO.binwrite("tmp/#{image_name}.png", png.to_s)
+      #IO.binwrite("tmp/#{image_name}.png", png.to_s)
+      IO.binwrite("public/barcode/#{image_name}.png", png.to_s)
   
-      blob = ActiveStorage::Blob.create_after_upload!(
-        io: File.open("tmp/#{image_name}.png"),
+      blob = ActiveStorage::Blob.create_and_upload!(
+        #io: File.open("tmp/#{image_name}.png"),
+        io: File.open("public/barcode/#{image_name}.png"),
         filename: image_name,
         content_type: 'png'
       )
   
-      product.barcode.attach(blob)
+      item.barcode.attach(blob)
     end
   end
   

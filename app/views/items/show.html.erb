@@ -1,7 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @item %>
-
+<div>
+  <%= image_tag (@item.numero + '.png') %>
+  <%= @item.numero %>
+</div>
 <div>
   <%= link_to "Edit this item", edit_item_path(@item) %> |
   <%= link_to "Back to items", items_path %>
