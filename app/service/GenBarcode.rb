@@ -10,11 +10,11 @@ class GenBarcode < ApplicationService
 				width:        800, #width of the barcode image on the label
 				length:       30,
 				print_speed:  3
-			)
-				
+			)				
 				
 			barcode = Zebra::Zpl::Barcode.new(
-				data:                       '12345678',
+				#data:                       '12345678',
+				data:                       @item.numero,
 				position:                   [85, 73],
 				height:                     100,
 				print_human_readable_code:  true,
