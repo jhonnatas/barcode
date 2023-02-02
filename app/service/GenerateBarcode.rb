@@ -28,8 +28,10 @@ class GenerateBarcode < ApplicationService
         filename: image_name,
         content_type: 'png'
       )
-  
+     
       item.barcode.attach(blob)
     end
+
+    
   end
   

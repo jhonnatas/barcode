@@ -60,6 +60,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  def print_barcode
+    Item.generate_code
+    redirect_to items_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -90,4 +96,6 @@ class ItemsController < ApplicationController
         item.save!
       end
     end
+
+    
 end
