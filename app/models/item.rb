@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  has_one_attached :barcode
+  #has_one_attached :barcode
 
   #after_create :generate_code
   
