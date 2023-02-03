@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     get 'print_barcode'
   end
  end
+
+ resources :items do
+  collection { post :import }
+end
    
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

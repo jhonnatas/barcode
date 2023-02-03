@@ -67,6 +67,27 @@ class ItemsController < ApplicationController
     redirect_to items_path
   end
 
+  def import
+    #data = Roo::Spreadsheet.open('lib/data.xlsx') # open spreadsheet
+    data = Roo::Spreadsheet.open(params[:file]) # open spreadsheet
+    headers = data.row(1) # get header row
+
+    data.each_with_index do |row, idx|
+      next if idx == 0 # skip header row
+      # create hash from headers and cells
+      item_data = Hash[[headers, row].transpose]
+      # next if item exists
+      if Item.exists?(numero: item_data['numero'])
+        puts "Item com o número #{item_data['numero']} já existe"
+        next
+      end
+      
+      item = Item.new(item_data)
+      item.save!
+    end
+    redirect_to items_path, notice: 'Arquivo importado com sucesso!'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -78,25 +99,4 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:numero, :descricao)
     end
 
-    def import
-      data = Roo::Spreadsheet.open('lib/data.xlsx') # open spreadsheet
-      headers = data.row(1) # get header row
-
-      data.each_with_index do |row, idx|
-        next if idx == 0 # skip header row
-        # create hash from headers and cells
-        item_data = Hash[[headers, row].transpose]
-        # next if item exists
-        if Item.exists?(numero: item_data['numero'])
-          puts "Item com o número #{item_data['numero']} já existe"
-          next
-        end
-        
-        item = Item.new(item_data)
-        puts "Salvando item com número: '#{item.numero}'"
-        item.save!
-      end
-    end
-
-    
 end

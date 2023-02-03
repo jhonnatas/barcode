@@ -10,4 +10,5 @@ class Item < ApplicationRecord
   def generate_code
     GenBarcode.call(self)
   end
+  
 end
