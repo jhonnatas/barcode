@@ -10,9 +10,9 @@ class GenBarcode < ApplicationService
 				width:        800, #width of the barcode image on the label
 				length:       30,
 				print_speed:  3
-		)				
+			)				
 				
-			barcode = Zebra::Zpl::Barcode.new(
+			barcode1 = Zebra::Zpl::Barcode.new(
 				#data:                       '12345678',
 				data:                       @item.numero,
 				position:                   [85, 73],
@@ -22,8 +22,19 @@ class GenBarcode < ApplicationService
 				wide_bar_width:             8,
 				type:                       Zebra::Zpl::BarcodeType::CODE_128_AUTO
 			)
-			
-			label << barcode
+			barcode2 = Zebra::Zpl::Barcode.new(
+				#data:                       '12345678',
+				data:                       @item.numero,
+				position:                   [525, 73],
+				height:                     100,
+				print_human_readable_code:  true,
+				narrow_bar_width:           2,
+				wide_bar_width:             8,
+				type:                       Zebra::Zpl::BarcodeType::CODE_128_AUTO
+			)
+
+			label << barcode1
+			label << barcode2
 			
 			print_job = Zebra::PrintJob.new 'zebra'
 			
