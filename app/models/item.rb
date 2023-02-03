@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   #  GenerateBarcode.call(self)
   #end
   
-  def self.generate_code
+  def generate_code
     GenBarcode.call(self)
   end
 end

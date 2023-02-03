@@ -10,7 +10,7 @@ class GenBarcode < ApplicationService
 				width:        800, #width of the barcode image on the label
 				length:       30,
 				print_speed:  3
-			)				
+		)				
 				
 			barcode = Zebra::Zpl::Barcode.new(
 				#data:                       '12345678',
@@ -22,7 +22,7 @@ class GenBarcode < ApplicationService
 				wide_bar_width:             8,
 				type:                       Zebra::Zpl::BarcodeType::CODE_128_AUTO
 			)
-				
+			
 			label << barcode
 			
 			print_job = Zebra::PrintJob.new 'zebra'
@@ -32,7 +32,6 @@ class GenBarcode < ApplicationService
 			#print_job.print label, ip
 			print_job.print label, ip, print_service: 'rlpr' # pra isso funcionar, tem que configurar o lpd no windows 
     end
-
     
   end
   

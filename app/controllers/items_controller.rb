@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require 'roo'
 
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[ show edit update destroy print_barcode ]
 
   # GET /items or /items.json
   def index
@@ -60,16 +60,20 @@ class ItemsController < ApplicationController
     end
   end
 
+   # Calls generate_code method and prints the barcode.
   def print_barcode
-    Item.generate_code
+    @item = Item.find(params[:id]) # I don't know why set_item method didn't get the object from db.
+    @item.generate_code
     redirect_to items_path
   end
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
       @item = Item.find(params[:id])
-    end
+    end   
 
     # Only allow a list of trusted parameters through.
     def item_params
