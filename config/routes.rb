@@ -12,11 +12,12 @@ Rails.application.routes.draw do
  end
 
  resources :items do
-  collection { 
+  collection do
     post :import 
-    get :del_all 
-  }
+  end
 end
+
+get 'del_all', to: 'items#del_all'
    
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

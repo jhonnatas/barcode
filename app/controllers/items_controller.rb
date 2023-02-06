@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
 
   def del_all
     if Item.any? 
-      Item.delete_all
+      Item.destroy_all
       redirect_to items_url, notice: "Os itens foram deletados." 
     else  
       redirect_to items_url, notice: "Não há itens cadastrados" 
