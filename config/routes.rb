@@ -7,12 +7,15 @@ Rails.application.routes.draw do
 
  resources :items do
   member do
-    get 'print_barcode'
+    get 'print_barcode'      
   end
  end
 
  resources :items do
-  collection { post :import }
+  collection { 
+    post :import 
+    get :del_all 
+  }
 end
    
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -60,6 +60,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def del_all
+    if Item.any? 
+      Item.delete_all
+      redirect_to items_url, notice: "Os itens foram deletados." 
+    else  
+      redirect_to items_url, notice: "Não há itens cadastrados" 
+    end     
+  end
+
    # Calls generate_code method and prints the barcode.
   def print_barcode
     @item = Item.find(params[:id]) # I don't know why set_item method didn't get the object from db.
