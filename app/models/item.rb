@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
   #has_one_attached :barcode
+  validates :numero, uniqueness: true
+  #validates :file, presence: true
 
   #after_create :generate_code
   

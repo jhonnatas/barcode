@@ -63,9 +63,9 @@ class ItemsController < ApplicationController
   def del_all
     if Item.any? 
       Item.destroy_all
-      redirect_to items_url, notice: "Os itens foram deletados." 
+      redirect_to items_url, success: "Os itens foram deletados." 
     else  
-      redirect_to items_url, notice: "Não há itens cadastrados" 
+      redirect_to items_url, info: "Não há itens cadastrados" 
     end     
   end
 
@@ -94,7 +94,7 @@ class ItemsController < ApplicationController
       item = Item.new(item_data)
       item.save!
     end
-    redirect_to items_path, notice: 'Arquivo importado com sucesso!'
+    redirect_to items_path, success: 'Arquivo importado com sucesso!'
   end
 
   private
