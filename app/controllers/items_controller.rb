@@ -77,24 +77,13 @@ class ItemsController < ApplicationController
   end
 
   def import
-    #data = Roo::Spreadsheet.open('lib/data.xlsx') # open spreadsheet
-    data = Roo::Spreadsheet.open(params[:file]) # open spreadsheet
-    headers = data.row(1) # get header row
-
-    data.each_with_index do |row, idx|
-      next if idx == 0 # skip header row
-      # create hash from headers and cells
-      item_data = Hash[[headers, row].transpose]
-      # next if item exists
-      if Item.exists?(numero: item_data['numero'])
-        puts "Item com o número #{item_data['numero']} já existe"
-        next
-      end
-      
-      item = Item.new(item_data)
-      item.save!
-    end
-    redirect_to items_path, success: 'Arquivo importado com sucesso!'
+    import = ImportItemCSV.new(file: params[:file]) # file is send by form
+    import.run!
+    if import.report.success?
+      redirect_to items_path, success: 'Arquivo importado com sucesso!'
+    else
+      redirect_to items_path, success: "Não foi possível importar o aqrquivo: #{import.report.message}"
+    end  
   end
 
   private
