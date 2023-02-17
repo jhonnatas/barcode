@@ -52,6 +52,7 @@ gem "roo", "~> 2.9.0"
 gem 'roo-xls'
 gem 'zebra-zpl'
 gem 'csv-importer'
+gem 'devise'
 
 
 group :development, :test do
