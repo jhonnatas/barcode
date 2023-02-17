@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
     if import.report.success?
       redirect_to items_path, success: 'Arquivo importado com sucesso!'
     else
-      redirect_to items_path, success: "Não foi possível importar o aqrquivo: #{import.report.message}"
+      redirect_to items_path, success: "Não foi possível importar o arquivo: #{import.report.message}"
     end  
   end
 
