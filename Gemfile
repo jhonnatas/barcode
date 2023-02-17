@@ -51,7 +51,7 @@ gem "bootsnap", require: false
 gem "roo", "~> 2.9.0"
 gem 'roo-xls'
 gem 'zebra-zpl'
-
+gem 'csv-importer'
 
 
 group :development, :test do
