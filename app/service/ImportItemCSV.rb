@@ -1,8 +1,10 @@
 class ImportItemCSV
-    include CSVImporter
+  include CSVImporter
 
-    model Item
+  model Item
 
-    column :numero, required: true
-    column :descricao, required: true
-  end
+  # Maps the csv columns to attributes
+  column :numero, required: true
+  column :descricao, required: true
+
+end
