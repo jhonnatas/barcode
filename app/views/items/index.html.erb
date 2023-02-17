@@ -1,4 +1,4 @@
-<h1>Itens</h1>
+<h1><i class="fa-regular fa-circle-plus"></i> Itens</h1>
 
 <%= render 'import' %>
 
@@ -21,8 +21,13 @@
     <% end %>
     </tbody>
   </div>
+  
 </div>
 
 <div>
- <%= render 'buttons' %>
+ <%= render 'buttons' %> 
 </div>  
+
+<%= paginate @items, theme: 'bootstrap-5',
+                   pagination_class: "pagination-sm mt-3 flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>

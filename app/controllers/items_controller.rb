@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
   require 'roo'
-  
+
   before_action :authenticate_user!
 
   before_action :set_item, only: %i[ show edit update destroy print_barcode ]
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order('NUMERO').page params[:page]  
   end
 
   # GET /items/1 or /items/1.json

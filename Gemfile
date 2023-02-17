@@ -53,6 +53,8 @@ gem 'roo-xls'
 gem 'zebra-zpl'
 gem 'csv-importer'
 gem 'devise'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 
 group :development, :test do
