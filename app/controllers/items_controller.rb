@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   require 'roo'
-  
+
   before_action :authenticate_user!
 
   before_action :set_item, only: %i[ show edit update destroy print_barcode ]
