@@ -78,18 +78,13 @@ Rails.application.configure do
   config.action_mailer.default_options = {from: 'barcodeappzpl@gmail.com'}
   config.action_mailer.delivery_method = :smtp
   
+  # This configuration only worked because i configurated the 2 steps secure on google and created a app password on google.
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'gmail.com',
-    user_name:            'barcodeappzpl@gmail.com',
-    password:             Rails.application.credentials.gmail[:password],
+    user_name:            'barcodeappzpl@gmail.com', #  for some reason Rails.application.credentials.gmail[:password] didn't work then I had to write the email
+    password:             Rails.application.credentials.gmail[:password], # from credential.yml.enc file
     authentication:       'plain',
     enable_starttls_auto: true  }
-  
-  #config.action_mailer.default_url_options = {:host =>'localhost:3000'}
-
-
-
-
 end
