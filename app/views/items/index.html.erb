@@ -1,4 +1,4 @@
-<h1><i class="fa-regular fa-circle-plus"></i> Itens</h1>
+<h1><i class="fa-regular fa-circle-plus"></i>Itens</h1>
 
 <%= render 'import' %>
 
@@ -12,7 +12,7 @@
       <tr>
         <th scope="col">Tombamento</th>
         <th scope="col">Descrição</th>  
-        <th scope="col"></th>
+        <th scope="col">Ação</th>
       </tr>
     </thead>
 
@@ -28,8 +28,8 @@
   </div>  
 </div>
 <%= paginate @items, theme: 'bootstrap-5',
-        pagination_class: "pagination-sm mt-1 flex-wrap justify-content-center",
-        nav_class: "d-inline-block" %>
+  pagination_class: "pagination-sm mt-1 flex-wrap justify-content-center",
+  nav_class: "d-inline-block" %>
 
 
 

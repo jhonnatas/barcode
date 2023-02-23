@@ -15,11 +15,11 @@
   </head>
 
   <body>
-   <!-- <div class="container-md"> -->
+   <% if user_signed_in? %>
+     <%= render 'shared/nav' %>
+   <% end %>
    <div class="container-fluid">
-      <% if user_signed_in? %>
-        <%= render 'shared/nav' %>
-      <% end %>
+      
 
       <%= render 'shared/flashes' %>
 
