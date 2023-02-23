@@ -2,6 +2,10 @@
 
 <%= render 'import' %>
 
+<div id="buttons">
+ <%= render 'buttons' %> 
+</div>  
+
 <div id="items">
   <table class="table mt-3">  
     <thead>
@@ -13,21 +17,19 @@
     </thead>
 
     <tbody>
-    <% @items.each do |item| %>
-      <%= render item %>
-      <p>
-        <%= link_to "", item %>
-      </p>
-    <% end %>
+      <% @items.each do |item| %>
+        <%= render item %>
+        <p>
+          <%= link_to "", item %>
+        </p>
+      <% end %>
+      
     </tbody>
-  </div>
-  
+  </div>  
 </div>
-
-<div>
- <%= render 'buttons' %> 
-</div>  
-
 <%= paginate @items, theme: 'bootstrap-5',
-                   pagination_class: "pagination-sm mt-3 flex-wrap justify-content-center",
-                   nav_class: "d-inline-block" %>
+        pagination_class: "pagination-sm mt-1 flex-wrap justify-content-center",
+        nav_class: "d-inline-block" %>
+
+
+
