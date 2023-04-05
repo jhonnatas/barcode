@@ -73,9 +73,9 @@ class ItemsController < ApplicationController
 
    # Calls generate_code method and prints the barcode.
   def print_barcode
-    @item = Item.find(params[:id]) # I don't know why set_item method didn't get the object from db.
+    @item = Item.find(params[:id])
     @item.generate_code
-    redirect_to items_path
+    redirect_to request.referer # back to the same page
   end
 
   def import
