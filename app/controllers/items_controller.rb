@@ -3,11 +3,11 @@ class ItemsController < ApplicationController
 
   before_action :authenticate_user!
 
-  before_action :set_item, only: %i[ show edit update destroy print_barcode ]
+  before_action :set_item, only: %i[show edit update destroy print_barcode]
 
   # GET /items or /items.json
   def index
-    @items = Item.all.order('NUMERO').page params[:page]  
+    @items = Item.all.order('NUMERO').page params[:page]
   end
 
   # GET /items/1 or /items/1.json
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to items_path success: "Item foi criado com sucesso." }
+        format.html { redirect_to items_path success: 'Item foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to items_path, success: "Item foi atualizado com sucesso." }
+        format.html { redirect_to items_path, success: 'Item foi atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,10 +54,10 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1 or /items/1.json
   def destroy
+    
     @item.destroy
-
     respond_to do |format|
-      format.html { redirect_to items_url, success: "Item foi deletado com sucesso." }
+      format.html { redirect_to items_url, success: 'Item foi deletado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -65,13 +65,13 @@ class ItemsController < ApplicationController
   def del_all
     if Item.any? 
       Item.destroy_all
-      redirect_to items_url, success: "Os itens foram deletados." 
+      redirect_to items_url, success: 'Os itens foram deletados.' 
     else  
-      redirect_to items_url, info: "Não há itens cadastrados" 
+      redirect_to items_url, info: 'Não há itens cadastrados.' 
     end     
   end
 
-   # Calls generate_code method and prints the barcode.
+  # Calls generate_code method and prints the barcode.
   def print_barcode
     @item = Item.find(params[:id])
     @item.generate_code
