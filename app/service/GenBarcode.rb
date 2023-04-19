@@ -26,9 +26,7 @@ class GenBarcode < ApplicationService
 		label << image2
 		label << barcode1
 		label << barcode2
-		
-		
-		
+				
 		#ip = '10.30.1.24'  # can use 'localhost', '127.0.0.1', or '0.0.0.0' for local machine
 		
 		#print_job.print label, ip
@@ -42,12 +40,9 @@ class GenBarcode < ApplicationService
 		print_job = Zebra::PrintJob.new 'zebra'
 		print_job.print label, ip, print_service: 'rlpr' # pra isso funcionar, tem que configurar o lpd no windows 
 	end
-		
-
-
 
 	def build_label
-		label = Zebra::Zpl::Label.new(
+		Zebra::Zpl::Label.new(
 			width:        800, #width of the barcode image on the label
 			length:       30,
 			print_speed:  3
