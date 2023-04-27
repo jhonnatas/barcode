@@ -51,10 +51,8 @@ class ItemsController < ApplicationController
     end
   end
 
-
   # DELETE /items/1 or /items/1.json
-  def destroy
-    
+  def destroy    
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url, success: 'Item foi deletado com sucesso.' }
@@ -73,7 +71,6 @@ class ItemsController < ApplicationController
 
   # Calls generate_code method and prints the barcode.
   def print_barcode
-    @item = Item.find(params[:id])
     @item.generate_code
     redirect_to request.referer # back to the same page
   end
@@ -85,18 +82,16 @@ class ItemsController < ApplicationController
       redirect_to items_path, success: 'Arquivo importado com sucesso!'
     else
       redirect_to items_path, success: "Não foi possível importar o arquivo: #{import.report.message}"
-    end  
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end   
 
-    # Only allow a list of trusted parameters through.
-    def item_params
-      params.require(:item).permit(:numero, :descricao)
-    end
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
+  def item_params
+    params.require(:item).permit(:numero, :descricao)
+  end
 end
