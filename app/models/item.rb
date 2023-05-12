@@ -1,11 +1,9 @@
 class Item < ApplicationRecord
  
-  validates :numero, uniqueness: true
-  
+  validates :numero, presence: true, uniqueness: true
   paginates_per 18
 
   def generate_code
     GenBarcode.call(self)
-  end
-  
+  end  
 end

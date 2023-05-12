@@ -61,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def del_all
-    if Item.any? 
+    if Item.any?
       Item.destroy_all
       redirect_to items_url, success: 'Os itens foram deletados.' 
     else  
@@ -75,6 +75,9 @@ class ItemsController < ApplicationController
     redirect_to request.referer # back to the same page
     @itens = Item.all
   end
+
+  def print_all
+    
 
   def import
     import = ImportItemCSV.new(file: params[:file]) # file is send by form
