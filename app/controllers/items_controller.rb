@@ -73,6 +73,7 @@ class ItemsController < ApplicationController
   def print_barcode
     @item.generate_code
     redirect_to request.referer # back to the same page
+    @itens = Item.all
   end
 
   def import
