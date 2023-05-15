@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
       expect(item).to be_valid
     end
 
-    it 'without numero' do
+    it 'is invalid without numero' do
       item = build(:item, numero: nil)
       expect(item).not_to be_valid
     end

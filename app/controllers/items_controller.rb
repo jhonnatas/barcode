@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   require 'roo'
 
   before_action :authenticate_user!
-
   before_action :set_item, only: %i[show edit update destroy print_barcode]
 
   # GET /items or /items.json
@@ -64,9 +63,9 @@ class ItemsController < ApplicationController
     if Item.any?
       Item.destroy_all
       redirect_to items_url, success: 'Os itens foram deletados.' 
-    else  
+    else
       redirect_to items_url, info: 'Não há itens cadastrados.' 
-    end     
+    end
   end
 
   # Calls generate_code method and prints the barcode.
@@ -77,7 +76,9 @@ class ItemsController < ApplicationController
   end
 
   def print_all
-    
+    @items = Item.all
+    @items.any? ? @items.each(&:generate_code) : redirect_to(items_path, notice: 'Não há itens cadastrados!')
+  end
 
   def import
     import = ImportItemCSV.new(file: params[:file]) # file is send by form
@@ -85,7 +86,7 @@ class ItemsController < ApplicationController
     if import.report.success?
       redirect_to items_path, success: 'Arquivo importado com sucesso!'
     else
-      redirect_to items_path, success: "Não foi possível importar o arquivo: #{import.report.message}"
+      redirect_to items_path, success: "Não foi possível importar o arquivo: #{ import.report.message }"
     end
   end
 
