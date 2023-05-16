@@ -2,15 +2,11 @@ class ItemsController < ApplicationController
   require 'roo'
 
   before_action :authenticate_user!
-  before_action :set_item, only: %i[show edit update destroy print_barcode]
+  before_action :set_item, only: %i[edit update destroy print_barcode]
 
   # GET /items or /items.json
   def index
     @items = Item.all.order('NUMERO').page params[:page]
-  end
-
-  # GET /items/1 or /items/1.json
-  def show
   end
 
   # GET /items/new
@@ -28,7 +24,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to items_path success: 'Item foi criado com sucesso.' }
+        format.html { redirect_to items_path, success: 'Item foi criado com sucesso.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new, status: :unprocessable_entity }
