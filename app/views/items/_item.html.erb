@@ -1,3 +1,9 @@
  <tr>
-    <td><span class="badge bg-secondary"><%= item.numero %></span></td><td><%= item.descricao %></td><td><%= link_to "Imprimir Barcode", print_barcode_item_path(item), class: 'btn btn-success btn-sm' %></td>
+    <td><span class="badge bg-secondary"><%= item.numero %></span></td>
+    <td><%= item.descricao %></td>
+    <td>
+      <%= link_to print_barcode_item_path(item), class: 'btn btn-success btn-sm' do %>
+         <i class="fas fa-print"></i> Imprimir 
+      <% end %>
+    </td>
  </tr>
