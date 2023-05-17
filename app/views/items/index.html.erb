@@ -1,18 +1,20 @@
-<h1><i class="fa-regular fa-circle-plus"></i>Itens</h1>
+<div class="card bg-light bg-gradient mt-2 p-2">
+  <h1 class="lead">Itens</h1>
+  <%= render 'import' %>
+  <div id="buttons">
+    <%= render 'buttons' %> 
+  </div>  
+</div>
 
-<%= render 'import' %>
-
-<div id="buttons">
- <%= render 'buttons' %> 
-</div>  
 
 <div id="items">
-  <table class="table able-responsive mt-3 card">  
+  <table class="table table-sm table-responsive mt-3">  
     <thead>
       <tr>
         <th scope="col">Tombamento</th>
         <th scope="col">Descrição</th>  
         <th scope="col">Ação</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -29,3 +31,9 @@
 
 <%= render 'shared/modal/utilizar' %>
 <%= render 'shared/modal/sobre' %>
+
+
+<%= paginate @items, theme: 'bootstrap-5',
+  pagination_class: "pagination-sm mt-1 flex-wrap justify-content-center",
+  nav_class: "d-inline-block" %>
+
