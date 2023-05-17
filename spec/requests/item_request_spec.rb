@@ -28,7 +28,7 @@ RSpec.describe "Item", type: :request do
         get new_item_url(@item)
         expect(response).to be_successful
       end
-    end
+    end 
 
     describe 'POST /create' do
       context 'with valid parameters' do
