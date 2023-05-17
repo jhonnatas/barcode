@@ -1,22 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg nav-color bg-gradient">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Barcode - Zebra ZD220</a>
+    <a class="navbar-brand link-light" href="#"> <i class="fas fa-barcode"></i> Barcode - Zebra ZD220</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Início</a>
+          <a class="nav-link active link-light" aria-current="page" href="#">Início</a>
         </li>
         <li class="nav-item">
-          <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+          <%= link_to "Sair", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link link-light" %>
         </li> 
         <li class="nav-item">
-         <%= link_to 'Como utilizar', '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#exampleModal', class: 'nav-link'}  %>
+         <%= link_to 'Como utilizar', '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#exampleModal', class: 'nav-link link-light'}  %>
         </li>  
         <li class="nav-item">
-         <%= link_to 'Sobre', '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modalSobre', class: 'nav-link'}  %>
+         <%= link_to 'Sobre', '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modalSobre', class: 'nav-link link-light'}  %>
         </li>         
       </ul>
     </div>

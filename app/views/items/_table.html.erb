@@ -1,0 +1,22 @@
+<div id="items">
+  <table class="table table-sm table-borderless table-responsive mt-3">  
+    <thead class="table-secondary">
+      <tr>
+        <th scope="col">Tombamento</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">Data</th>  
+        <th scope="col">Ação</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @items.each do |item| %>
+        <%= render item %>
+        <p>
+          <%= link_to "", item %>
+        </p>
+      <% end %>      
+    </tbody>
+  </div>  
+</div>

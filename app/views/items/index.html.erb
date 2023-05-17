@@ -1,39 +1,52 @@
-<div class="card bg-light bg-gradient mt-2 p-2">
-  <h1 class="lead">Itens</h1>
-  <%= render 'import' %>
-  <div id="buttons">
-    <%= render 'buttons' %> 
-  </div>  
+<div class="card mt-2">
+  <div class="card-header">
+    <i class="fas fa-barcode"></i> Itens
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Importação de itens via arquivo CSV</h5>
+    <p class="card-text">Permite que itens sejam inseridos em massa via arquivo csv</p>
+    <%= render 'import' %>
+  </div>
 </div>
 
-
-<div id="items">
-  <table class="table table-sm table-responsive mt-3">  
-    <thead>
-      <tr>
-        <th scope="col">Tombamento</th>
-        <th scope="col">Descrição</th>  
-        <th scope="col">Ação</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @items.each do |item| %>
-        <%= render item %>
-        <p>
-          <%= link_to "", item %>
-        </p>
-      <% end %>      
-    </tbody>
-  </div>  
+<div class="row mt-2">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-pen"></i> Ações
+      </div>
+      <div class="card-body">       
+       <%= render 'buttons' %> 
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-comment-dots"></i> Outras informações
+      </div>
+      <div class="card-body">
+        <p>N° de itens cadastrados: <span class="badge bg-secondary"><%= Item.count %></span></p>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div class="row mt-2">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+         <i class="fas fa-barcode"></i> Itens importados / cadastrados
+      </div>
+      <div class="card-body">       
+       <%= render 'table' %> 
+      </div>
+    </div>
+  </div>
+</div>  
+
+<%= render 'pagination' %>
 <%= render 'shared/modal/utilizar' %>
 <%= render 'shared/modal/sobre' %>
 
-
-<%= paginate @items, theme: 'bootstrap-5',
-  pagination_class: "pagination-sm mt-1 flex-wrap justify-content-center",
-  nav_class: "d-inline-block" %>
 

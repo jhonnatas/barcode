@@ -1,13 +1,11 @@
 <%= form_tag import_items_path, multipart: true, class: "row g-3 mb-2" do %>
-<form class="row g-3">
-  
-  <div class="col-auto">
-    <label for="inputPassword2" class="visually-hidden">Password</label>
-    
-		<%= file_field_tag :file, class: "form-control" %>
+<form class="row g-3">  
+  <div class="input-group flex-nowrap">
+     <span class="input-group-text" id="addon-wrapping"><i class="fas fa-upload"></i></span>
+    <%= file_field_tag :file, class: "form-control" %>
   </div>
   <div class="col-auto">   
-		<%= submit_tag "Importar arquivo .csv", class: "form-control btn btn-primary" %>
+		<%= submit_tag "Importar arquivo .csv", class: "form-control btn btn-import bg-gradient" %>
   </div>
 </form>
 <% end %>

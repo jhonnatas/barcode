@@ -1,17 +1,17 @@
-<%= link_to new_item_path,  class: 'btn btn-primary btn-sm shadow-sm rounded' do %>
+<%= link_to new_item_path,  class: 'btn btn-primary btn-sm shadow-sm rounded bg-gradient' do %>
  <i class="fas fa-plus"></i></i> Cadastrar
 <% end %>
 
 <%= link_to print_all_path, data: { 
   turbo_method: :get,
   turbo_confirm: "Essa ação não poderá ser cancelada. Tem certeza?"               
-}, class: 'btn btn-warning shadow-sm btn-sm rounded' do %> 
+}, class: 'btn btn-warning shadow-sm btn-sm rounded bg-gradient' do %> 
   <i class="fas fa-print"></i> Imprimir tudo
 <% end %>
 
 <%= link_to del_all_path, data: {
   turbo_method: :get,
   turbo_confirm: "Tem certeza?"                
-  }, class: 'btn btn-danger shadow-sm btn-sm rounded' do %> 
+  }, class: 'btn btn-danger shadow-sm btn-sm rounded bg-gradient' do %> 
   <i class="fas fa-trash"></i> Deletar tudo
 <% end %>
