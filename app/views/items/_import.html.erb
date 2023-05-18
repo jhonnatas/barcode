@@ -2,10 +2,10 @@
 <form class="row g-3">  
   <div class="input-group flex-nowrap">
      <span class="input-group-text" id="addon-wrapping"><i class="fas fa-upload"></i></span>
-    <%= file_field_tag :file, class: "form-control" %>
+    <%= file_field_tag :file, class: "form-control form-control-sm" %>
   </div>
   <div class="col-auto">   
-		<%= submit_tag "Importar arquivo .csv", class: "form-control btn btn-import bg-gradient" %>
+		<%= submit_tag "Importar arquivo .csv", class: "form-control btn btn-import bg-gradient btn-sm" %>
   </div>
 </form>
 <% end %>

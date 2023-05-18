@@ -12,3 +12,25 @@
 a:link {
   text-decoration: none;
 }
+
+/* Overriding the original pagination's Bootstrap remove this to get it to original style. */
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #9139e3;
+  border-color: #9139e3;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  color: #131313;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+
+

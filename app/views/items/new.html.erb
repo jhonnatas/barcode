@@ -1,9 +1,17 @@
-<h1>New item</h1>
-
-<%= render "form", item: @item %>
+<div class="row mt-2">
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <i class="fas fa-plus"></i> Cadastrar Item
+      </div>
+      <div class="card-body">       
+       <%= render "form", item: @item %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br>
-
 <div>
   <%= link_to "Back to items", items_path %>
 </div>

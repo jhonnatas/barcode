@@ -36,7 +36,8 @@
   <div class="col-sm-12">
     <div class="card">
       <div class="card-header">
-         <i class="fas fa-barcode"></i> Itens importados / cadastrados
+         <i class="fas fa-grip-horizontal"></i> Itens importados / cadastrados
+         <%= render 'pagination' %>
       </div>
       <div class="card-body">       
        <%= render 'table' %> 
@@ -48,5 +49,7 @@
 <%= render 'pagination' %>
 <%= render 'shared/modal/utilizar' %>
 <%= render 'shared/modal/sobre' %>
+<hr>
+
 
 
