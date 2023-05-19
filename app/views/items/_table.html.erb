@@ -4,18 +4,16 @@
       <tr>
         <th scope="col">Tombamento</th>
         <th scope="col">Descrição</th>
-        <th scope="col">Data</th>  
+        <th scope="col">Data</th>          
+        <th scope="col">Status</th>
         <th scope="col">Ação</th>
-        <th></th>
+        <th scope="col"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @items.each do |item| %>
-        <%= render item %>
-        <p>
-          <%= link_to "", item %>
-        </p>
+        <%= render item %>       
       <% end %>      
     </tbody>
   </div>  

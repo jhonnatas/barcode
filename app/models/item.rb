@@ -5,5 +5,7 @@ class Item < ApplicationRecord
 
   def generate_code
     GenBarcode.call(self)
+    self.printed = true
+    self.save!
   end  
 end

@@ -23,14 +23,14 @@
         </li> 
         <li class="nav-item">
           <%= link_to '#', class: "nav-link link-light" do %>
-            <i class="fas fa-user-circle"></i> <%= current_user.email %> 
+            <i class="fas fa-user-circle"></i> <%= current_user.email if user_signed_in?%> 
           <% end %>
         </li>
         <li class="nav-item">
           <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link link-light" do %>
             <i class="fas fa-sign-in-alt"></i> Sair
           <% end %>
-        </li>        
+        </li>            
       </ul>
     </div>
   </div>

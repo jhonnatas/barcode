@@ -2,6 +2,7 @@
    <td><span class="badge bg-secondary"><%= item.numero %></span></td>
    <td><%= item.descricao.truncate(100) %></td>
    <td><span class="badge bg-secondary"><%= l item.created_at, format: :long %></span></td>
+   <td><span class="badge bg-success"><%=  'Impressa ok' if item.printed? %></span></td>
    <td>
       <%= link_to print_barcode_item_path(item), class: 'btn btn-secondary btn-sm bg-gradient' do %>
          <i class="fas fa-print"></i> 
