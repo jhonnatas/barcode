@@ -7,4 +7,5 @@ class ImportItemCSV
   column :numero, required: true
   column :descricao, required: true
 
+  identifier :numero
 end

@@ -11,5 +11,10 @@ RSpec.describe Item, type: :model do
       item = build(:item, numero: nil)
       expect(item).not_to be_valid
     end
+
+    it 'is invalid when not a number' do
+      item = build(:item, numero: 'abcdef')
+      expect(item).not_to be_valid
+    end
   end
 end

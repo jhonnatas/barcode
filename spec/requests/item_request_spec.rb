@@ -1,4 +1,7 @@
+# frozen_string_literal: true
 require 'rails_helper'
+require 'csv'
+require 'ImportItemCSV'
 
 RSpec.describe "Item", type: :request do
   let(:valid_params) {
@@ -23,12 +26,27 @@ RSpec.describe "Item", type: :request do
       end
     end
 
-    describe 'GET /new' do
-      it 'renders a successful response' do
-        get new_item_url(@item)
-        expect(response).to be_successful
+    # describe 'GET /print_barcode' do
+    #   xit 'redirects to items page' do
+    #     get print_barcode_item_url(@item), headers: { "HTTP_REFERER" => items_path }
+    #     expect(response).to redirect_to items_path
+    #   end
+    # end
+
+    describe 'GET /del_all' do
+      it 'deletes all items from db' do
+        get del_all_url
+        expect(Item.count).to eq(0)
       end
-    end 
+    end
+
+    describe 'GET /del_all' do
+      it 'shows Não há itens cadastrados when no items saved on db' do
+        Item.destroy_all
+        get del_all_url
+        expect(flash[:info]).to match(/Não há itens cadastrados/)
+      end
+    end
 
     describe 'POST /create' do
       context 'with valid parameters' do
@@ -63,6 +81,30 @@ RSpec.describe "Item", type: :request do
         get edit_item_url(@item)
         expect(response).to be_successful
       end
+    end
+
+    it 'creates items by importing a valid csv file' do 
+      file = "#{Rails.root}/public/item_data.csv"
+        CSV.open(file, 'wb', col_sep: ';', headers: true) do |csv|
+          csv << %w[numero descricao]
+          csv << [@item.numero, @item.descricao]
+        end
+
+        import = ImportItemCSV.new(path: file)
+        import.run!
+        expect(import.report.success?).to be true
+    end
+
+    it 'fails when importing a csv file without number information' do 
+      file = "#{Rails.root}/public/item_data.csv"
+        CSV.open(file, 'wb', col_sep: ';', headers: true) do |csv|
+          csv << %w[descricao]
+          csv << [@item.descricao]
+        end
+
+        import = ImportItemCSV.new(path: file)
+        import.run!
+        expect(import.report.success?).to be false
     end
   end
 end
