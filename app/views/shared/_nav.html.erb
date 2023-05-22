@@ -19,7 +19,9 @@
          <% end %> 
         </li>  
         <li class="nav-item">
-         <%= link_to 'Sobre', '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modalSobre', class: 'nav-link link-light'}  %>
+         <%= link_to '#',  {:remote => true, 'data-bs-toggle' =>  "modal", 'data-bs-target' => '#modalSobre', class: 'nav-link link-light'} do %>
+          <i class="fas fa-info-circle"></i> Sobre
+         <% end %>
         </li> 
         <li class="nav-item">
           <%= link_to '#', class: "nav-link link-light" do %>

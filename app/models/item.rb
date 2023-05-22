@@ -1,5 +1,4 @@
-class Item < ApplicationRecord
- 
+class Item < ApplicationRecord 
   validates :numero, presence: true, uniqueness: true, numericality: { only_integer: true }
   paginates_per 8
 
@@ -7,5 +6,5 @@ class Item < ApplicationRecord
     GenBarcode.call(self)
     self.printed = true
     self.save!
-  end  
+  end
 end
