@@ -10,8 +10,12 @@ Things you may want to cover:
  - Rails 7.0.4.2
 
 * System dependencies
+- instalar imagemagick
 
 * Configuration
+ - Compartilhar impressora com o nome 'zebra'
+ - ![Uploading image.png…]()
+ - sudo apt-get install rlpr
  
 * Database creation
     - rails active_storage:install
